@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background: #f3f4f6;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+        .welcome-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        .main-content.visible {
+            opacity: 1;
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-100 to-pink-100 min-h-screen">
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="welcome-screen">
+        <div class="text-center text-white px-8">
+            <div class="mb-8">
+                
+            </div>
+            <h1 class="text-5xl font-bold mb-4">A Quiet Place Where You Still Live</h1>
+            
+            <p class="text-lg mb-8 opacity-75">“I wrote this because I’ve kept it inside for too long. No expectations, just something I wanted you to know.”</p>
+            <button 
+                onclick="enterSite()" 
+                class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg"
+            >
+            Enter 
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="main-content">
+        <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="flex justify-center mb-8">
+            <div class="bg-white rounded-lg shadow-md p-1 flex">
+                <button id="content-tab" class="tab-btn px-6 py-3 rounded-md font-medium transition-all duration-200 bg-blue-500 text-white" onclick="switchTab('content')">
+                    The Letter
+                </button>
+                <button id="gallery-tab" class="tab-btn px-6 py-3 rounded-md font-medium transition-all duration-200 text-gray-600 hover:text-gray-800" onclick="switchTab('gallery')">
+                    The Memories
+                </button>
+            </div>
+        </div>
+
+        <!-- Content Tab -->
+        <div id="content-content" class="tab-content active">
+            <div class="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
+                <article class="prose prose-lg max-w-none">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">The Words I Never Said</h2>            
+
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        I’ve held this inside for a long time, and I’m writing not because I expect anything, but because some things deserve to be said out loud, 
+                        even if they’re only for you and the quiet of this page.
+                    </p>
+
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        You were once my whole world — not in some loud, dramatic way, but in a thousand small details that added up until I didn’t recognise life without them.
+                         I miss your stupid giggles, how they’d spill out of you at the smallest thing and make everything lighter.
+                          I miss the way your eyes would find mine — those beautiful eyes that somehow made it impossible for me to look anywhere else.
+                           When you smiled, your eyes would crease into almost a perfect “C,” and that little shape would warm me more than any words could.
+                            Your smile could heat me up in a room full of coldness; you would shine in a crowd and somehow make the rest of the world quiet so only you mattered.
+                    </p>
+
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Your presence lives freely in my mind. It’s not loud or constant, but it comes back in the night when everything else is still. 
+                        In the silent hours you return without me asking you to, in small, unpredictable ways — a scent on a shirt, a line from a song, a face in a passing crowd. 
+                        Sometimes I’ll catch myself smiling at a memory of your cute, awkward half-smile that didn’t want to show much, but was the perfect balance of beautiful and shy. 
+                        Other times I’ll remember your blur face when you didn’t catch on to what I was saying and I’ll laugh at how honest you were without trying.
+                    </p>
+
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Echoes of What Was Ours</h3>
+                    
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        I loved — I still love — how you knew me before I could say the simplest things. You knew how to love me, how to treat me, in ways no one else could. 
+                        Your affection was quiet and fierce at once; it didn’t need to announce itself to be felt. I love hearing you talk, 
+                        and I loved the small, steady way you would nod and let me be heard. Those tiny gestures mattered more than you ever knew.
+                    </p>
+
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        You brought an enormous impact into my life despite your size. It’s strange how something so unassuming could move a heart so deeply. 
+                        You carried the kind of light that made ordinary days feel heavenly. Being with you felt right — right in a way that didn’t need proof, only presence. 
+                        I still remember how I couldn’t resist you: not your looks alone, but everything — the way you breathed when you were thinking, the scent that would linger and make the world softer, 
+                        the warmth that seemed to follow you.
+                    </p>
+
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Fragments of a Heaven Once Mine</h3>
+                    
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Perhaps, we lost each other over a miscommunication — sentences that turned into a wall. I replay that night more than I should, not to blame, 
+                        but because I keep searching for the exact moment things shifted. If I could undo it, I would. If I could say the right thing at the right time, I would. 
+                        But I also know life rarely gives perfect do-overs, and that’s why I’m writing this now: to put my truth where it belongs, not to ask you back, 
+                        only to let you know what you once were to me.
+                    </p>
+
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        You were my dime — a rare, small thing I didn’t realise how valuable until it wasn’t in my pocket anymore. Losing you left a quiet hole I’ve been learning to live with. 
+                        I don’t write this to change the past or to make you feel guilty. I write it because you should know how deeply and honestly you were loved. 
+                        You should know that, for all the time we spent together, it felt heavenly — like a soft place I carried inside me long after the days ended.
+                    </p>
+
+                    <blockquote class="border-l-4 border-purple-500 pl-6 py-4 bg-purple-50 rounded-r-lg mb-6">
+                        <p class="text-gray-700 italic">"I feel your presence, even when you're not here,<br> I notice your essence. Your touch stayed behind, leaving marks on my heart that won't fade nor be loose screws to unbind. 
+                            <br>I try to move on, but the memories of us pull me back, like a shadow that I can't escape til the crack of dawn. You soul intertwine with mine, I drink your words and command like wine. 
+                            <br>Every quiet moment, reminds me of how you left a part of yourself here, covered in dust like an old instrument. I ask god for peace, but the ache of your absence still fills the empty spaces of my beliefs. 
+                            <br>My heart feels heavy with memories, whispering of what was once reveries. I try to find comfort in knowing God knows what I feel, I seek His mercy to guide me through and heal. 
+                            <br>But I continue to feel the traces of your love, Heaven knows I long for you, Is this what Marvin Gaye was talking of? Lingering like scars on my heart, You're the black Mona Lisa to my art."</p>
+                    </blockquote>
+
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        So this is my confession and my exhale. I have kept these feelings for too long. I wanted you to know the ways you shaped my nights and my better mornings. 
+                        I wanted you to know that the memories are gentle, not bitter; that the longing is steady, not demanding. I carry no expectations from you — only the hope that, somewhere, 
+                        you are smiling and that life treats you kindly.
+                    </p>
+
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        If ever you stumble across this and think of me, know that I remember you fondly and that you will always hold a small, bright space in my heart. 
+                        Thank you for being the person who taught me how right it could feel to be loved.
+                    </p>
+
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        With quiet affection,<br>
+                        <bold>Anas</bold>
+                    </p>
+
+                </article>
+            </div>
+        </div>
+
+         <!-- Gallery Tab -->
+        <div id="gallery-content" class="tab-content">
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">All my favourite things</h2>
+                
+                <div class="gallery-grid mb-12">
+                    <!-- GALLERY_IMAGE_1: Replace this comment with your gallery image -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border-2 border-dashed border-gray-300">
+                        <div class="w-full h-64 bg-gray-100 flex items-center justify-center">
+                            <img src="Image/Image1.jpeg" alt="Description of image" >
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-white-800" style="color:#f3f4f6; display: inline; background-color:#764ba2;">Our first outside 'date'</h3>
+                        </div>
+                    </div>
+
+                    <!-- GALLERY_IMAGE_3: Replace this comment with your gallery image -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border-2 border-dashed border-gray-300">
+                        <div class="w-full h-64 bg-gray-100 flex items-center justify-center">
+                            <img src="Image/Image3.jpeg" alt="Description of image" >
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-white-800" style="color:#f3f4f6; display: inline; background-color:#764ba2;">Your daily life update</h3>
+                        </div>
+                    </div>
+
+                    <!-- GALLERY_IMAGE_4: Replace this comment with your gallery image -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border-2 border-dashed border-gray-300">
+                        <div class="w-full h-64 bg-gray-100 flex items-center justify-center">
+                            <img src="Image/Image4.jpeg" alt="Description of image" >
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-white-800" style="color:#f3f4f6; display: inline; background-color:#764ba2;">almost 'C' eyes when you smile</h3>
+                        </div>
+                    </div>
+
+                    <!-- GALLERY_IMAGE_5: Replace this comment with your gallery image -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border-2 border-dashed border-gray-300">
+                        <div class="w-full h-64 bg-gray-100 flex items-center justify-center">
+                            <img src="Image/Image5.jpeg" alt="Description of image" >
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-white-800" style="color:#f3f4f6; display: inline; background-color:#764ba2;">Is it necessary to put your cute here?</h3>
+                        </div>
+                    </div>
+
+                    <!-- GALLERY_IMAGE_6: Replace this comment with your gallery image -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border-2 border-dashed border-gray-300">
+                        <div class="w-full h-64 bg-gray-100 flex items-center justify-center">
+                            <img src="Image/Image11.jpeg" alt="Description of image" >
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-white-800" style="color:#f3f4f6; display: inline; background-color:#764ba2;">Believe me, it was more than this</h3>
+                        </div>
+                    </div>
+
+                    <!-- GALLERY_IMAGE_7: Replace this comment with your gallery image -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border-2 border-dashed border-gray-300">
+                        <div class="w-full h-64 bg-gray-100 flex items-center justify-center">
+                            <img src="Image/Image7.jpeg" alt="Description of image" >
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-white-800" style="color:#f3f4f6; display: inline; background-color:#764ba2;">FM dates that look simple but meant the world to me</h3>
+                        </div>
+                    </div>
+
+                    <!-- GALLERY_IMAGE_8: Replace this comment with your gallery image -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border-2 border-dashed border-gray-300">
+                        <div class="w-full h-64 bg-gray-100 flex items-center justify-center">
+                            <img src="Image/Image8.jpeg" alt="Description of image" >
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-white-800" style="color:#f3f4f6; display: inline; background-color:#764ba2;">cute plus garang somehow great combination</h3>
+                        </div>
+                    </div>
+
+                    <!-- GALLERY_IMAGE_9: Replace this comment with your gallery image -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border-2 border-dashed border-gray-300">
+                        <div class="w-full h-64 bg-gray-100 flex items-center justify-center">
+                            <img src="Image/Image9.jpeg" alt="Description of image" >
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-white-800" style="color:#f3f4f6; display: inline; background-color:#764ba2;">Your shines seems different here</h3>
+                        </div>
+                    </div>
+
+                    <!-- GALLERY_IMAGE_10: Replace this comment with your gallery image -->
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border-2 border-dashed border-gray-300">
+                        <div class="w-full h-64 bg-gray-100 flex items-center justify-center">
+                            <img src="Image/Image10.jpeg" alt="Description of image" >
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-semibold text-white-800" style="color:#f3f4f6; display: inline; background-color:#764ba2;">You can't lie your height with this angle tbh</h3>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- Video Section -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6"></h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- VIDEO_PLACEHOLDER_1 -->
+                        <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md border-2 border-dashed border-gray-300">
+                            <div class="w-full h-100 bg-gray-200 flex items-center justify-center">
+                                <div class="text-center text-gray-500">
+
+                                    <video width="600" autoplay loop muted>
+                                        <source src="Video/Video1.mp4" type="video/mp4">
+                                    </video>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- VIDEO_PLACEHOLDER_2 -->
+                        <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md border-2 border-dashed border-gray-300">
+                            <div class="w-full h-100 bg-gray-200 flex items-center justify-center">
+                                <div class="text-center text-gray-500">
+
+                                    <video width="600" autoplay loop muted>
+                                        <source src="Video/Video5.mp4" type="video/mp4">
+                                    </video>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- VIDEO_PLACEHOLDER_3 -->
+                        <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md border-2 border-dashed border-gray-300">
+                            <div class="w-full h-100 bg-gray-200 flex items-center justify-center">
+                                <div class="text-center text-gray-500">
+
+                                    <video width="600" autoplay loop muted>
+                                        <source src="Video/Video3.mp4" type="video/mp4">
+                                    </video>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- VIDEO_PLACEHOLDER_4 -->
+                        <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md border-2 border-dashed border-gray-300">
+                            <div class="w-full h-100 bg-gray-200 flex items-center justify-center">
+                                <div class="text-center text-gray-500">
+
+                                    <video width="600" autoplay loop muted>
+                                        <source src="Video/Video4.mp4" type="video/mp4">
+                                    </video>
+                                    
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function enterSite() {
+            const welcomeScreen = document.getElementById('welcome-screen');
+            const mainContent = document.getElementById('main-content');
+            
+            // Hide welcome screen with fade out
+            welcomeScreen.classList.add('hidden');
+            
+            // Show main content with fade in after a short delay
+            setTimeout(() => {
+                mainContent.classList.add('visible');
+            }, 250);
+        }
+    </script>
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => {
+                btn.classList.remove('bg-blue-500', 'text-white');
+                btn.classList.add('text-gray-600', 'hover:text-gray-800');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabName + '-content').classList.add('active');
+
+            // Add active class to selected tab button
+            const activeButton = document.getElementById(tabName + '-tab');
+            activeButton.classList.add('bg-blue-500', 'text-white');
+            activeButton.classList.remove('text-gray-600', 'hover:text-gray-800');
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98336aebe1e92441',t:'MTc1ODU2MTA0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
